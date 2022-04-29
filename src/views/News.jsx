@@ -7,6 +7,10 @@ import Navigation from "../components/Navigation";
 
 const News = () => {
   const [newsData, setNewsData] = useState([]);
+  const [author, setAuthor] = useState("");
+  const [content, setContent] = useState("");
+  const [contentError, setContentError] = useState(false);
+  const [authorError, setAuthorError] = useState(false);
 
   useEffect(() => {
     getData();
@@ -18,15 +22,49 @@ const News = () => {
       .then((res) => setNewsData(res.data));
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (author === "") {
+      setAuthorError(true);
+    } else if (content.length < 140){
+      setContentError(true);
+    } else{
+      axios.post("http://localhost:3001/articles", {
+        author,
+        content,
+        date: Date.now(),
+      }).then(() => {
+        setAuthor("");
+        setContent("");
+        setAuthorError(false);
+        setContentError(false);
+        getData();
+      })
+    }
+  }
+
   return (
     <div className="news-container">
       <Logo />
       <Navigation />
       <h1>News</h1>
 
-      <form>
-        <input type="text" placeholder="Nom" />
-        <textarea placeholder="Message"></textarea>
+      <form onSubmit={e => handleSubmit(e)}>
+        <input
+          className={authorError ? "error" : ""}
+          type="text"
+          placeholder="Nom"
+          value={author}
+          onChange={e => setAuthor(e.target.value)}/>
+          {authorError && <p>Le nom de l'auteur est obligatoire</p>}
+        <textarea
+          className={contentError ? "error" : ""}
+          // style={{ border: error ? "1px solid red" : "1px solid #61dafb" }}
+          placeholder="Message"
+          value={content}
+          onChange={e => setContent(e.target.value)}></textarea>
+          {contentError && <p>Veuillez écrire un minimum de 140 caractères.</p>}
         <input type="submit" value="Envoyer" />
       </form>
 
