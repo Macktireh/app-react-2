@@ -1,5 +1,10 @@
 @import "./settings";
+
+@import "./views/news";
+@import "./views/about";
+
 @import "./components/navigation";
 @import "./components/logo";
 @import "./components/countries";
 @import "./components/card";
+@import "./components/article";
