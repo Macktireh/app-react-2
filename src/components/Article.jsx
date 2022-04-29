@@ -1,7 +1,8 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import DeleteArticle from './DeleteArticle';
 
-const Article = ({ article }) => {
+const Article = (props) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editContent, setEditContent] = useState("")
 
@@ -24,7 +25,7 @@ const Article = ({ article }) => {
     if (editContent === ""){
       setIsEditing(false);
     } else {
-      axios.patch("http://localhost:3001/articles/" + article.id, data).then(() => {
+      axios.patch("http://localhost:3001/articles/" + props.article.id, data).then(() => {
         setIsEditing(false);
       })
     }
@@ -37,17 +38,17 @@ const Article = ({ article }) => {
       style={{backgroundColor: isEditing ? "#f3feff" : "white"}}>
 
       <div className="card-header">
-        <h3>{article.author}</h3>
-        <em>Posté le {dateParser(article.date)}</em>
+        <h3>{props.article.author}</h3>
+        <em>Posté le {dateParser(props.article.date)}</em>
       </div>
 
       {isEditing ? (
         <textarea 
           autoFocus
-          defaultValue={editContent ? editContent : article.content}
+          defaultValue={editContent ? editContent : props.article.content}
           onChange={e => setEditContent(e.target.value)}></textarea>
       ) : (
-        <p>{editContent ? editContent : article.content}</p>
+        <p>{editContent ? editContent : props.article.content}</p>
       )}
 
     <div className="btn-container">
@@ -56,7 +57,7 @@ const Article = ({ article }) => {
       ) : (
         <button onClick={() => setIsEditing(true)}>Modifier</button>
       )}
-      <button>Supprimer</button>
+      <DeleteArticle id={props.article.id} handleDelete={props.handleDelete} />
     </div>
     </div>
   );

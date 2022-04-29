@@ -27,7 +27,7 @@ const News = () => {
 
     if (author === "") {
       setAuthorError(true);
-    } else if (content.length < 140){
+    } else if (content === "") {
       setContentError(true);
     } else{
       axios.post("http://localhost:3001/articles", {
@@ -41,6 +41,14 @@ const News = () => {
         setContentError(false);
         getData();
       })
+    }
+  }
+
+  const handleDelete = (id) => {
+
+    if (window.confirm("Voulez vous vraiment cet article ?")) {
+      axios.delete("http://localhost:3001/articles/" + id)
+      getData();
     }
   }
 
@@ -73,8 +81,8 @@ const News = () => {
           newsData
             .sort((a, b) => b.date - a.date)
             .map(article => (
-              <Article key={article.id} article={article} />
-              ))
+              <Article key={article.id} article={article} handleDelete={handleDelete}/>
+            ))
         }
       </ul>
     </div>

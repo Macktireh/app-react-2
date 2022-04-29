@@ -1,28 +1,3 @@
 {
-  "articles": [
-    {
-      "author": "Mack AS",
-      "content": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sapiente doloribus vel sunt laborum eos enim odit maxime corporis vero nihil voluptatum a, ullam delectus ad sit. Odit quis adipisci illo sit porro recusandae? Sequi, dolorum repellendus doloremque qui tempora beatae.",
-      "date": 1621530288602,
-      "id": 1
-    },
-    {
-      "author": "Zecha",
-      "content": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sapiente doloribus vel sunt laborum eos enim odit maxime corporis vero nihil voluptatum a, ullam delectus ad sit. Odit quis adipisci illo sit porro recusandae? Sequi, dolorum repellendus doloremque qui tempora beatae.\n\nLorem, ipsum dolor sit amet consectetur adipisicing elit. Sapiente doloribus vel sunt laborum eos enim odit maxime corporis vero nihil voluptatum a, ullam delectus ad sit. Odit quis adipisci illo sit porro recusandae? Sequi, dolorum repellendus doloremque qui tempora beatae.",
-      "date": 1621536029778,
-      "id": 2
-    },
-    {
-      "author": "Charco",
-      "content": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sapiente doloribus vel sunt laborum eos enim odit maxime corporis vero nihil voluptatum a, ullam delectus ad sit. Odit quis adipisci illo sit porro recusandae? Sequi, dolorum repellendus doloremque qui tempora beatae. Lorem, ipsum dolor sit amet consectetur adipisicing elit.",
-      "date": 1621536056135,
-      "id": 3
-    },
-    {
-      "author": "test",
-      "content": "test 5",
-      "date": 1651245699715,
-      "id": 4
-    }
-  ]
+  "articles": []
 }
